@@ -285,3 +285,15 @@ resource "aws_autoscaling_group" "app" {
     propagate_at_launch = true
   }
 }
+
+module "project_info" {
+  source = "./modules/project-info"
+
+  project_name = var.project_name
+  environment  = var.environment
+}
+
+output "project_name_prefix" {
+  description = "Project name prefix returned by the module"
+  value       = module.project_info.resource_name_prefix
+}
