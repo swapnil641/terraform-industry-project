@@ -8,6 +8,10 @@ resource "aws_vpc" "main" {
   tags = {
     Name = "${var.project_name}-${var.environment}-vpc"
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 data "aws_availability_zones" "available" {
